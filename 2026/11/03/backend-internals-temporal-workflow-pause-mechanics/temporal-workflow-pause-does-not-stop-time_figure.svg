@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1180" width="1080" height="1180" font-family="Inter, 'Inter Tight', Arial, sans-serif">
+  <rect width="1080" height="1180" fill="#F5F3EE"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#1A1A1A"/>
+    </marker>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#E5484D"/>
+    </marker>
+  </defs>
+
+  <!-- paused band spanning all lanes -->
+  <rect x="430" y="150" width="330" height="730" fill="#1F4FD8" fill-opacity="0.07" stroke="#1F4FD8" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="595" y="126" font-size="26" font-weight="700" fill="#1F4FD8" text-anchor="middle" letter-spacing="2">PAUSED</text>
+
+  <!-- Lane 1 -->
+  <text x="40" y="190" font-size="30" font-weight="700" fill="#1A1A1A">Lane 1: Server task dispatch</text>
+  <rect x="40" y="220" width="300" height="86" rx="10" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+  <text x="190" y="257" font-size="28" font-weight="700" fill="#1A1A1A" text-anchor="middle">Operator: Pause</text>
+  <text x="190" y="289" font-size="22" fill="#1A1A1A" text-anchor="middle">written to event history</text>
+  <path d="M340 263 H420" stroke="#1A1A1A" stroke-width="3" marker-end="url(#arr)"/>
+  <text x="380" y="248" font-size="24" fill="#1A1A1A" text-anchor="middle">gates</text>
+  <!-- gate -->
+  <rect x="424" y="208" width="12" height="110" fill="#1A1A1A"/>
+  <text x="595" y="256" font-size="26" font-weight="700" fill="#1A1A1A" text-anchor="middle">GATED</text>
+  <text x="595" y="290" font-size="22" fill="#1A1A1A" text-anchor="middle">no new workflow tasks,</text>
+  <text x="595" y="318" font-size="22" fill="#1A1A1A" text-anchor="middle">activity tasks or retries</text>
+  <rect x="770" y="220" width="270" height="86" rx="10" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-dasharray="8 6"/>
+  <text x="905" y="257" font-size="26" font-weight="700" fill="#1A1A1A" text-anchor="middle">Your agent code</text>
+  <text x="905" y="289" font-size="22" fill="#1A1A1A" text-anchor="middle">and retries: stopped</text>
+  <line x1="40" y1="360" x2="1040" y2="360" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- Lane 2 -->
+  <text x="40" y="430" font-size="30" font-weight="700" fill="#1A1A1A">Lane 2: Timers and timeouts</text>
+  <rect x="40" y="460" width="300" height="86" rx="10" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+  <text x="190" y="497" font-size="28" font-weight="700" fill="#1A1A1A" text-anchor="middle">Schedule-To-Close</text>
+  <text x="190" y="529" font-size="22" fill="#1A1A1A" text-anchor="middle">(activity deadline) ticking</text>
+  <path d="M340 503 H760" stroke="#E5484D" stroke-width="4" marker-end="url(#arrRed)"/>
+  <text x="595" y="488" font-size="26" font-weight="700" fill="#E5484D" text-anchor="middle">KEEPS COUNTING</text>
+  <text x="595" y="540" font-size="22" fill="#E5484D" text-anchor="middle">long pause</text>
+  <rect x="770" y="460" width="270" height="86" rx="10" fill="none" stroke="#E5484D" stroke-width="4"/>
+  <text x="905" y="497" font-size="26" font-weight="700" fill="#E5484D" text-anchor="middle">Timeout fires</text>
+  <text x="905" y="529" font-size="22" fill="#E5484D" text-anchor="middle">ActivityTaskTimedOut</text>
+  <text x="40" y="600" font-size="24" fill="#E5484D" font-weight="700">Failure point: a long pause turns "stuck" into "timed out".</text>
+  <line x1="40" y1="640" x2="1040" y2="640" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- Lane 3 -->
+  <text x="40" y="710" font-size="30" font-weight="700" fill="#1A1A1A">Lane 3: Activity attempt already running</text>
+  <rect x="40" y="740" width="300" height="86" rx="10" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+  <text x="190" y="777" font-size="28" font-weight="700" fill="#1A1A1A" text-anchor="middle">Running attempt</text>
+  <text x="190" y="809" font-size="22" fill="#1A1A1A" text-anchor="middle">started before Pause</text>
+  <path d="M340 783 H760" stroke="#1A1A1A" stroke-width="3" marker-end="url(#arr)"/>
+  <text x="595" y="768" font-size="26" font-weight="700" fill="#1A1A1A" text-anchor="middle">NOT INTERRUPTED</text>
+  <rect x="770" y="740" width="270" height="86" rx="10" fill="none" stroke="#1A1A1A" stroke-width="3"/>
+  <text x="905" y="777" font-size="26" font-weight="700" fill="#1A1A1A" text-anchor="middle">Finishes</text>
+  <text x="905" y="809" font-size="22" fill="#1A1A1A" text-anchor="middle">result waits for unpause</text>
+  <line x1="40" y1="880" x2="1040" y2="880" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- summary -->
+  <text x="40" y="950" font-size="30" font-weight="700" fill="#1A1A1A">Pause stops task dispatch, not time.</text>
+  <text x="40" y="1010" font-size="24" fill="#1A1A1A">Rule: Pause is for stop, fix, resume in minutes.</text>
+  <text x="40" y="1048" font-size="24" fill="#1A1A1A">Need it often? Fix activity timeouts and heartbeats.</text>
+  <text x="40" y="1120" font-size="22" fill="#1A1A1A" fill-opacity="0.6">Source: Temporal docs, Workflow Pause (server v1.30.0+, pre-release)</text>
+</svg>
